@@ -1,11 +1,8 @@
-const getQuestion = () => {
-  return fetch(
-    "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean"
-  )
-    .then(res => res.json())
-    .then(data => {
-      return data.results;
-    });
-};
+const API = "https://opentdb.com/";
+const QUESTION_URL = "api.php?amount=10&difficulty=hard&type=boolean";
 
-export default getQuestion;
+export const getQuestions = async (url = QUESTION_URL) => {
+  const response = await fetch(`${API}/${url}`);
+  const data = await response.json();
+  return data;
+};
