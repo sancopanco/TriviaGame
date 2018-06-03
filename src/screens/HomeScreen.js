@@ -26,7 +26,7 @@ class HomeScreen extends Component {
 
         <Button
           large
-          raised
+          //raised
           title="BEGIN"
           buttonStyle={styles.beginButtonStyle}
           onPress={this.handleBeginButton}
