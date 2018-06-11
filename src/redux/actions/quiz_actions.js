@@ -3,7 +3,7 @@ import { FETCH_QUESTIONS, ANSWER_QUESTION, START_QUIZ } from "./types";
 
 export const fetchQuestions = () => async dispatch => {
   try {
-    let { results } = await getQuestions();
+    let results = await getQuestions();
     dispatch({ type: FETCH_QUESTIONS, payload: results });
   } catch (error) {
     console.log(error);

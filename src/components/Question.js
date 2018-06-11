@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Card, Divider, Button } from "react-native-elements";
 import PropTypes from "prop-types";
-var he = require("he");
 
 // create a component
 const Question = props => {
@@ -14,8 +13,6 @@ const Question = props => {
     handleActionButton
   } = props;
 
-  const questionText = he.decode(question);
-
   return (
     <Card
       title={category}
@@ -24,7 +21,7 @@ const Question = props => {
         marginRight: 10
       }}
     >
-      <Text style={styles.questionTextStyle}>{questionText}</Text>
+      <Text style={styles.questionTextStyle}>{question}</Text>
       <Divider />
       <View style={styles.actionContainer}>
         <Button

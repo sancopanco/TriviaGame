@@ -21,6 +21,7 @@ class QuizScreen extends Component {
   }
   handleActionButton = answer => {
     this.props.answerQuestion(answer);
+    console.log("quiz", this.props.quiz);
     const { currentQuestionIndex, questions } = this.props.quiz;
     if (currentQuestionIndex === questions.length - 1) {
       this.props.navigation.navigate("Results");
@@ -67,4 +68,7 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
   return { quiz: state.quiz };
 }
-export default connect(mapStateToProps, actions)(QuizScreen);
+export default connect(
+  mapStateToProps,
+  actions
+)(QuizScreen);

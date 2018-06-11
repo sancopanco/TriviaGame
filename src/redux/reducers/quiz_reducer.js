@@ -2,7 +2,7 @@ import { FETCH_QUESTIONS, ANSWER_QUESTION, START_QUIZ } from "../actions/types";
 const INITIAL_STATE = {
   questions: [],
   currentQuestionIndex: 0,
-  userAnswers: {}
+  userAnswers: []
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -10,10 +10,19 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_QUESTIONS:
       return { ...state, questions: action.payload };
     case ANSWER_QUESTION:
-      const copyUserAnswers = {
+      const currentQuestion = state.questions[state.currentQuestionIndex];
+      const correctAnswer = currentQuestion.correct_answer;
+      const questionTitle = currentQuestion.question;
+      const isCorrect = correctAnswer === action.payload;
+      const copyUserAnswers = [
         ...state.userAnswers,
-        [state.currentQuestionIndex]: action.payload
-      };
+        {
+          answer: action.payload,
+          correctAnswer: correctAnswer,
+          isCorrect,
+          questionTitle
+        }
+      ];
 
       return {
         ...state,
